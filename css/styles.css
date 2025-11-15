@@ -340,7 +340,14 @@
   min-width: 20px;
   text-align: center;
 }
+.category-section .slider {
+  overflow: hidden; /* oculta las demás cards */
+}
 
+.category-section .slider .product-card {
+  flex: 0 0 100%; /* cada card ocupa todo el ancho del slider */
+  max-width: 100%;
+}
 /*RESPONSIVE*/
 @media (max-width: 768px) {
   .product-card {
