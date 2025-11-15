@@ -18,16 +18,28 @@
     </div>
   </section>
   <!--PRODUCTOS-->
-  <section id="products-container"></section>
+  <section id="products-container" class="products-container"></section>
   <script type="module">
-    import { renderProductCards } from './js/cards.js';
-
     const products = [
-        { title: 'Notebook Pro 15\""', description: 'i7, 8GB RAM, Disco SSD 1TB', price: 750000, image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8" },
-        { title: 'Teclado OnePlus 11 Concept', description: 'Snapdragon 680, 8GB RAM, 126ROM', price: 450000, image: "https://i.blogs.es/3de3fe/op/1366_2000.webp" },
-        { title: 'Cargador Carga Rápida', description: 'TurboPower 65W, 7.1Ampers', price: 50000, image: "https://imagenes.elpais.com/resizer/v2/QZTUJNWHPFGR5LTVPOFJZKCBBU.png?auth=0d8390af677bfaefdf5e239f5a41c2c6cddc80473bdaf867cb7a43170c246043&width=1960" },
+        {
+            title: 'Notebook Pro 15"',
+            description: 'i7, 8GB RAM, Disco SSD 1TB',
+            price: 750000,
+            image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8"
+        },
+        {
+            title: 'Teclado OnePlus 11 Concept',
+            description: 'Snapdragon 680, 8GB RAM, 126ROM',
+            price: 450000,
+            image: "https://i.blogs.es/3de3fe/op/1366_2000.webp"
+        },
+        {
+            title: 'Cargador Carga Rápida',
+            description: 'TurboPower 65W, 7.1Ampers',
+            price: 50000,
+            image: "https://imagenes.elpais.com/resizer/v2/QZTUJNWHPFGR5LTVPOFJZKCBBU.png?auth=0d8390af677bfaefdf5e239f5a41c2c6cddc80473bdaf867cb7a43170c246043&width=1960"
+        }
     ];
-
     renderProductCards(products, 'products-container');
 </script>
   <!--FOOTER-->
