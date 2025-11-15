@@ -157,17 +157,4 @@ footer {
     padding:15px; 
     margin-top: 50px; 
     margin-block-end: 50px;
-}
-
-/* RESPONSIVE */
-@media (max-width: 768px) {
-    .product-card {
-        min-width: 45%;
-    }
-}
-
-@media (max-width: 480px) {
-    .product-card {
-        min-width: 90%;
-    }
-}
+  }
