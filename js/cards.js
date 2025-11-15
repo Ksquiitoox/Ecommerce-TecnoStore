@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   const productsContainer = document.getElementById("products-container");
-
+  
   const products = [
     //LAPTOPS
     { category: "Laptops", title: "Notebook Pro 15\"", price: 750000, img: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8" },
@@ -16,8 +16,9 @@ document.addEventListener("DOMContentLoaded", () => {
     { category: "Accesorios", title: "Cargador Carga Rápida", price: 50000, img: "https://imagenes.elpais.com/resizer/v2/QZTUJNWHPFGR5LTVPOFJZKCBBU.png?auth=0d8390af677bfaefdf5e239f5a41c2c6cddc80473bdaf867cb7a43170c246043&width=1960" }
   ];
 
+  // AGRUPAR POR CATEGORIA
   const categories = [...new Set(products.map(p => p.category))];
-
+  
   categories.forEach(cat => {
     const section = document.createElement("div");
     section.classList.add("category-section");
@@ -68,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-// FUNCION PARA CAMBIAR CANTIDAD
+// FUNCION CANTIDAD
 function changeQty(btn, delta) {
   const qtySpan = btn.parentElement.querySelector(".qty");
   let qty = parseInt(qtySpan.textContent);
