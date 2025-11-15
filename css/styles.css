@@ -287,9 +287,15 @@ button:hover { background-color: #0ea5e9; }
 }
 
 /*CARRUSEL*/
-.slider-wrapper { position: relative; width: 100%; overflow: hidden; margin-bottom: 50px; }
+.slider-wrapper { 
+  position: relative; 
+  width: 100%; 
+  overflow: hidden; 
+  margin-bottom: 50px; 
+}
 .slider-wrapper .category-title { margin-left: 15px; }
-.slider-wrapper .slider { padding-left: 15px; }
+.slider-wrapper .slider { padding-left: 15px; display: flex; gap: 20px; scroll-behavior: smooth; overflow-x: auto; }
+.slider-wrapper .slider::-webkit-scrollbar { display: none; }
 .slider-wrapper .product-card { min-width: 260px; flex: 0 0 auto; }
 @media (max-width: 768px) {
   .slider-wrapper .product-card { min-width: 90%; }
