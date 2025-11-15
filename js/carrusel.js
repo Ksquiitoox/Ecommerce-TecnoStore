@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
   const productsContainer = document.getElementById("products-container");
-
   if (!productsContainer) return;
 
   const products = [
@@ -18,7 +17,6 @@ document.addEventListener("DOMContentLoaded", () => {
     { category: "Accesorios", title: "Cargador Carga Rápida", price: 50000, img: "https://imagenes.elpais.com/resizer/v2/QZTUJNWHPFGR5LTVPOFJZKCBBU.png?auth=0d8390af677bfaefdf5e239f5a41c2c6cddc80473bdaf867cb7a43170c246043&width=1960" }
   ];
 
-  // Mezclar productos aleatoriamente
   const shuffledProducts = products.sort(() => Math.random() - 0.5);
 
   // Crear wrapper del carrusel
@@ -58,23 +56,36 @@ document.addEventListener("DOMContentLoaded", () => {
   const prevBtn = document.createElement("button");
   prevBtn.classList.add("slider-btn", "prev-btn");
   prevBtn.textContent = "◀";
-  prevBtn.addEventListener("click", () => {
-    const cardWidth = slider.querySelector(".product-card").offsetWidth + 20; // 20 = gap
-    slider.scrollBy({ left: -cardWidth, behavior: "smooth" });
-  });
 
   const nextBtn = document.createElement("button");
   nextBtn.classList.add("slider-btn", "next-btn");
   nextBtn.textContent = "▶";
-  nextBtn.addEventListener("click", () => {
-    const cardWidth = slider.querySelector(".product-card").offsetWidth + 20;
-    slider.scrollBy({ left: cardWidth, behavior: "smooth" });
-  });
 
   wrapper.appendChild(prevBtn);
   wrapper.appendChild(nextBtn);
-
   productsContainer.appendChild(wrapper);
+
+  // Control de índice
+  let currentIndex = 0;
+  const cards = slider.querySelectorAll(".product-card");
+
+  function showCard(index) {
+    const offset = index * slider.offsetWidth;
+    slider.scrollTo({ left: offset, behavior: "smooth" });
+  }
+
+  prevBtn.addEventListener("click", () => {
+    currentIndex = (currentIndex - 1 + cards.length) % cards.length;
+    showCard(currentIndex);
+  });
+
+  nextBtn.addEventListener("click", () => {
+    currentIndex = (currentIndex + 1) % cards.length;
+    showCard(currentIndex);
+  });
+
+  // Inicial mostrar primera card
+  showCard(currentIndex);
 });
 
 //Cantidad de productos
