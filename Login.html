@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iniciar Sesión - TecnoStore</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <!--NAVBAR-->
+  <nav id="navbar"></nav>
+  <!--CONTENIDO PRINCIPAL-->
+  <main class="form-container"> 
+    <h2>Iniciar Sesión</h2>
+    <form id="LoginForm" class="form-box">
+      <div class="input-icon">
+        <span class="icon">📧</span>
+        <input type="email" id="email" name="email" placeholder="Correo electrónico" required>
+      </div>
+      <div class="input-icon">
+        <span class="icon">🔒</span>
+        <input type="password" id="password" name="password" placeholder="Contraseña" pattern=".{6,}" required>
+      </div>
+      <button type="submit">Ingresar</button>
+      <p class="alt-link">
+        ¿No tenés cuenta? <a href="Register.html">Registrate aquí</a>
+      </p>
+    </form>
+  </main>
+  <!--FOOTER-->
+  <footer style="background-color:#0f172a; color:white; text-align:center; padding:15px; margin-top: 50px; margin-block-end: 50px;">
+    <p>© 2025 TecnoStore — Todos los derechos reservados</p>
+  </footer>
+  <!--SCRIPTS-->
+  <script src="js/navbarData.js"></script>
+  <script src="js/navbar.js"></script>
+  <script src="js/login.js"></script>
+  <script src="js/logout.js"></script>
+</body>
+</html>
