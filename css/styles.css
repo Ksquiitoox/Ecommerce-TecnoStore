@@ -286,17 +286,46 @@ button:hover { background-color: #0ea5e9; }
   .slider-btn { padding: 8px; font-size: 1.2rem; }
 }
 
-/*CARRUSEL*/
+/*CARRUSEL CORREGIDO*/
 .slider-wrapper { 
   position: relative; 
   width: 100%; 
   overflow: hidden; 
   margin-bottom: 50px; 
+  padding: 0 40px; /* espacio para botones a los costados */
 }
-.slider-wrapper .category-title { margin-left: 15px; }
-.slider-wrapper .slider { padding-left: 15px; display: flex; gap: 20px; scroll-behavior: smooth; overflow-x: auto; }
+.slider-wrapper .category-title { 
+  margin-left: 0; 
+  padding-left: 15px; 
+}
+.slider-wrapper .slider { 
+  display: flex; 
+  gap: 20px; 
+  scroll-behavior: smooth; 
+  overflow-x: auto; 
+  padding-bottom: 10px; 
+}
 .slider-wrapper .slider::-webkit-scrollbar { display: none; }
 .slider-wrapper .product-card { min-width: 260px; flex: 0 0 auto; }
+
+/* Botones de flecha */
+.slider-wrapper .slider-btn { 
+  position: absolute; 
+  top: 50%; 
+  transform: translateY(-50%); 
+  background-color: rgba(15,23,42,0.8); 
+  color: #38bdf8; 
+  border: none; 
+  padding: 10px; 
+  border-radius: 50%; 
+  cursor: pointer; 
+  font-size: 1.5rem; 
+  z-index: 20; 
+}
+.slider-wrapper .prev-btn { left: 10px; }
+.slider-wrapper .next-btn { right: 10px; }
+
 @media (max-width: 768px) {
   .slider-wrapper .product-card { min-width: 90%; }
+  .slider-wrapper .slider-btn { padding: 8px; font-size: 1.2rem; }
 }
