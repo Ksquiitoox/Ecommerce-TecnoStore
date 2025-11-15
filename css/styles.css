@@ -11,6 +11,7 @@ body {
   object-fit: cover;
   border-radius: 10px;
 }
+
 /*NAVBAR*/
 .navbar {
   display: flex;
@@ -49,12 +50,8 @@ body {
   flex-wrap: nowrap;
   white-space: nowrap;
 }
-.nav-links li {
-  flex-shrink: 0;
-}
-.nav-links::-webkit-scrollbar {
-  display: none; /* oculta scrollbar visual */
-}
+.nav-links li { flex-shrink: 0; }
+.nav-links::-webkit-scrollbar { display: none; }
 .nav-links a {
   color: #ffffff;
   text-decoration: none;
@@ -63,9 +60,7 @@ body {
   transition: color 0.3s;
   display: inline-block;
 }
-.nav-links a:hover {
-  color: #38bdf8;
-}
+.nav-links a:hover { color: #38bdf8; }
 .nav-links a.active {
   color: #38bdf8;
   border-bottom: 2px solid #38bdf8;
@@ -74,6 +69,7 @@ body {
   from { opacity: 0; transform: translateY(-50px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
 /*BANNER*/
 .banner {
   background-image: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c');
@@ -100,20 +96,10 @@ body {
   border-radius: 10px;
 }
 @keyframes fadeIn {
-  to { opacity: 1; transform: translateY(0);}
+  to { opacity: 1; transform: translateY(0); }
 }
-.banner-logo {
-  width: 120px;
-  height: auto;
-}
-.banner h2 {
-  font-size: 2.5rem;
-  margin-bottom: 10px;
-}
-.banner p {
-  font-size: 1.2rem;
-  margin-bottom: 20px;
-}
+.banner h2 { font-size: 2.5rem; margin-bottom: 10px; }
+.banner p { font-size: 1.2rem; margin-bottom: 20px; }
 .btn-banner {
   background-color: #38bdf8;
   color: #0f172a;
@@ -123,30 +109,22 @@ body {
   font-weight: bold;
   transition: background-color 0.3s;
 }
-.btn-banner:hover {
-  background-color: #0ea5e9;
-}
+.btn-banner:hover { background-color: #0ea5e9; }
+
 /*FORMULARIO DEL LOGIN Y REGISTRO*/
 .form-container {
   max-width: 400px;
   margin: auto;
-  padding: 20px 40px 20px 40px;
+  padding: 20px 40px;
   background-color: #ffffff;
   border-radius: 30px;
   box-shadow: 0 0 50px rgba(0,0,0,0.1);
   text-align: center;
 }
-.form-container h2 {
-  margin-bottom: 20px;
-  color: #0f172a;
-}
-.form-box {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  align-items: center;
-}
-/*ICONOS*/
+.form-container h2 { margin-bottom: 20px; color: #0f172a; }
+.form-box { display: flex; flex-direction: column; gap: 15px; align-items: center; }
+
+/*ICONOS INPUTS*/
 .input-icon {
   position: relative;
   width: 100%;
@@ -169,15 +147,14 @@ body {
   transition: all 0.3s;
   box-sizing: border-box;
 }
-/*VALIDACION*/
 input:invalid { border-color: red; }
 input:valid { border-color: green; }
-/*ANIMACION*/
 input:focus {
   border-color: #38bdf8;
   box-shadow: 0 0 5px #38bdf8;
   outline: none;
 }
+
 /*BOTONES*/
 button {
   width: 100%;
@@ -187,4 +164,67 @@ button {
   border: none;
   border-radius: 5px;
   font-weight: bold;
-  cursor: p
+  cursor: pointer;
+  transition: background-color 0.3s;
+  box-sizing: border-box;
+}
+button:hover { background-color: #0ea5e9; }
+.alt-link { margin-top: 10px; }
+.alt-link a { color: #38bdf8; text-decoration: none; font-weight: bold; }
+.alt-link a:hover { text-decoration: underline; }
+
+/*CARD DE PRODUCTO*/
+.products-container { padding: 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; }
+.product-card {
+  background-color: #ffffff;
+  border-radius: 20px;
+  padding: 15px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+.product-card:hover { transform: translateY(-5px); }
+.product-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 15px;
+}
+.product-title {
+  font-size: 1.1rem;
+  color: #0f172a;
+  margin: 10px 0 5px;
+  font-weight: bold;
+}
+.product-price {
+  font-size: 1.2rem;
+  color: #38bdf8;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.btn-product {
+  width: 100%;
+  padding: 10px;
+  background-color: #38bdf8;
+  color: #0f172a;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+.btn-product:hover { background-color: #0ea5e9; }
+
+/*FLECHAS Y SLIDER (solo para desplazamiento horizontal)*/
+.category-section {
+  position: relative;
+  margin-bottom: 50px;
+}
+.category-title { font-size: 1.5rem; font-weight: bold; margin-bottom: 15px; color: #0f172a; }
+.slider {
+  display: flex;
+  overflow-x: auto;
+  gap: 20px;
+  scroll-behavior: smooth;
+}
+.slider::-webkit-scro
