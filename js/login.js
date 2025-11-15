@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (!form) return;
   form.addEventListener("submit", (e) => {
     e.preventDefault();
-    const email = document.getElementById("email").value.trim();
+    const email = document.getElementById("email").value.trim().toLowerCase();
     const password = document.getElementById("password").value.trim();
     if (!email || !password) {
       alert("Por favor, completá todos los campos.");

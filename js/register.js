@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     e.preventDefault();
     const nombre = document.getElementById("nombre").value.trim();
     const apellido = document.getElementById("apellido").value.trim();
-    const email = document.getElementById("email").value.trim();
+    const email = document.getElementById("email").value.trim().toLowerCase();
     const password = document.getElementById("password").value.trim();
     const fecha = document.getElementById("fecha").value;
     if (!nombre || !apellido || !email || !password || !fecha) {
