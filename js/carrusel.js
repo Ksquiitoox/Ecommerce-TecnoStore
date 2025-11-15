@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
   const productsContainer = document.getElementById("products-container");
 
+  if (!productsContainer) return;
+
   const products = [
     //LAPTOPS
     { category: "Laptops", title: "Notebook Pro 15\"", price: 750000, img: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8" },
@@ -19,29 +21,23 @@ document.addEventListener("DOMContentLoaded", () => {
   // Mezclar productos aleatoriamente
   const shuffledProducts = products.sort(() => Math.random() - 0.5);
 
-  // Crear sección del carrusel
-  const section = document.createElement("div");
-  section.classList.add("category-section");
+  // Crear wrapper del carrusel
+  const wrapper = document.createElement("div");
+  wrapper.classList.add("slider-wrapper");
 
+  // Título
   const title = document.createElement("h2");
   title.classList.add("category-title");
   title.textContent = "Producto recomendado";
-  section.appendChild(title);
+  wrapper.appendChild(title);
 
-  const sliderWrapper = document.createElement("div");
-  sliderWrapper.classList.add("slider-wrapper");
-  sliderWrapper.style.overflow = "hidden";
-  sliderWrapper.style.position = "relative";
-
+  // Slider
   const slider = document.createElement("div");
   slider.classList.add("slider");
-  slider.style.display = "flex";
-  slider.style.transition = "transform 0.5s ease";
 
   shuffledProducts.forEach(p => {
     const card = document.createElement("div");
     card.classList.add("product-card");
-    card.style.minWidth = "300px"; // Ancho fijo para una tarjeta visible
     card.innerHTML = `
       <img src="${p.img}" alt="${p.title}" class="product-img">
       <h3 class="product-title">${p.title}</h3>
@@ -56,48 +52,32 @@ document.addEventListener("DOMContentLoaded", () => {
     slider.appendChild(card);
   });
 
-  sliderWrapper.appendChild(slider);
-  section.appendChild(sliderWrapper);
+  wrapper.appendChild(slider);
 
-  // Flechas
+  // Botones de flecha
   const prevBtn = document.createElement("button");
   prevBtn.classList.add("slider-btn", "prev-btn");
   prevBtn.textContent = "◀";
-  prevBtn.style.top = "50%";
-  prevBtn.style.left = "10px";
+  prevBtn.addEventListener("click", () => {
+    const cardWidth = slider.querySelector(".product-card").offsetWidth + 20; // 20 = gap
+    slider.scrollBy({ left: -cardWidth, behavior: "smooth" });
+  });
 
   const nextBtn = document.createElement("button");
   nextBtn.classList.add("slider-btn", "next-btn");
   nextBtn.textContent = "▶";
-  nextBtn.style.top = "50%";
-  nextBtn.style.right = "10px";
+  nextBtn.addEventListener("click", () => {
+    const cardWidth = slider.querySelector(".product-card").offsetWidth + 20;
+    slider.scrollBy({ left: cardWidth, behavior: "smooth" });
+  });
 
-  section.appendChild(prevBtn);
-  section.appendChild(nextBtn);
+  wrapper.appendChild(prevBtn);
+  wrapper.appendChild(nextBtn);
 
-  productsContainer.appendChild(section);
-
-  // Lógica del carrusel
-  let currentIndex = 0;
-  const totalCards = shuffledProducts.length;
-  const cardWidth = slider.querySelector(".product-card").offsetWidth + 20; // 20 = gap
-
-  function updateSlider() {
-    slider.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
-  }
-
-  prevBtn.onclick = () => {
-    currentIndex = Math.max(currentIndex - 1, 0);
-    updateSlider();
-  };
-
-  nextBtn.onclick = () => {
-    currentIndex = Math.min(currentIndex + 1, totalCards - 1);
-    updateSlider();
-  };
+  productsContainer.appendChild(wrapper);
 });
 
-//CANTIDAD
+//Cantidad de productos
 function changeQty(btn, delta) {
   const qtySpan = btn.parentElement.querySelector(".qty");
   let qty = parseInt(qtySpan.textContent);
