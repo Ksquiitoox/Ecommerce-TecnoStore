@@ -263,22 +263,8 @@
 }
 .slider {
   display: flex;
-  overflow: hidden; /* oculta cards fuera de pantalla */
+  overflow-x: auto;
   scroll-behavior: smooth;
-}
-.product-card {
-  flex: 0 0 100%; /* solo 1 card visible */
-  max-width: 100%;
-  margin-right: 20px;
-  background-color: #ffffff;
-  border-radius: 20px;
-  padding: 15px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.1);
-  text-align: center;
-  transition: transform 0.3s ease;
-}
-.product-card:hover {
-  transform: translateY(-5px);
 }
 .slider-btn {
   position: absolute;
@@ -296,6 +282,21 @@
 }
 .slider-btn:hover {
   background-color: #0ea5e9;
+}
+.slider::-webkit-scrollbar { display: none; }
+.product-card {
+  flex: 0 0 250%;
+  max-width: 100%;
+  margin-right: 20px;
+  background-color: #ffffff;
+  border-radius: 20px;
+  padding: 15px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+.product-card:hover {
+  transform: translateY(-5px);
 }
 .prev-btn {
   left: 10px;
