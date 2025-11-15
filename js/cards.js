@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   const productsContainer = document.getElementById("products-container");
-  
+
   const products = [
     //LAPTOPS
     { category: "Laptops", title: "Notebook Pro 15\"", price: 750000, img: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8" },
@@ -16,60 +16,58 @@ document.addEventListener("DOMContentLoaded", () => {
     { category: "Accesorios", title: "Cargador Carga Rápida", price: 50000, img: "https://imagenes.elpais.com/resizer/v2/QZTUJNWHPFGR5LTVPOFJZKCBBU.png?auth=0d8390af677bfaefdf5e239f5a41c2c6cddc80473bdaf867cb7a43170c246043&width=1960" }
   ];
 
-  // AGRUPAR POR CATEGORIA
-  const categories = [...new Set(products.map(p => p.category))];
-  
-  categories.forEach(cat => {
-    const section = document.createElement("div");
-    section.classList.add("category-section");
+  // Mezclar productos aleatoriamente
+  const shuffledProducts = products.sort(() => Math.random() - 0.5);
 
-    const title = document.createElement("h2");
-    title.classList.add("category-title");
-    title.textContent = cat;
-    section.appendChild(title);
+  // Crear sección única
+  const section = document.createElement("div");
+  section.classList.add("category-section");
 
-    const slider = document.createElement("div");
-    slider.classList.add("slider");
+  const title = document.createElement("h2");
+  title.classList.add("category-title");
+  title.textContent = "Producto recomendado";
+  section.appendChild(title);
 
-    const catProducts = products.filter(p => p.category === cat);
-    catProducts.forEach(p => {
-      const card = document.createElement("div");
-      card.classList.add("product-card");
-      card.innerHTML = `
-        <img src="${p.img}" alt="${p.title}" class="product-img">
-        <h3 class="product-title">${p.title}</h3>
-        <p class="product-price">$${p.price.toLocaleString()}</p>
-        <div class="quantity-selector">
-          <button class="qty-btn" onclick="changeQty(this, -1)">-</button>
-          <span class="qty">1</span>
-          <button class="qty-btn" onclick="changeQty(this, 1)">+</button>
-        </div>
-        <button class="btn-product">Agregar al carrito</button>
-      `;
-      slider.appendChild(card);
-    });
+  const slider = document.createElement("div");
+  slider.classList.add("slider");
 
-    section.appendChild(slider);
-
-    // FLECHAS
-    const prevBtn = document.createElement("button");
-    prevBtn.classList.add("slider-btn", "prev-btn");
-    prevBtn.textContent = "◀";
-    prevBtn.onclick = () => slider.scrollBy({ left: -260, behavior: "smooth" });
-
-    const nextBtn = document.createElement("button");
-    nextBtn.classList.add("slider-btn", "next-btn");
-    nextBtn.textContent = "▶";
-    nextBtn.onclick = () => slider.scrollBy({ left: 260, behavior: "smooth" });
-
-    section.appendChild(prevBtn);
-    section.appendChild(nextBtn);
-
-    productsContainer.appendChild(section);
+  shuffledProducts.forEach(p => {
+    const card = document.createElement("div");
+    card.classList.add("product-card");
+    card.innerHTML = `
+      <img src="${p.img}" alt="${p.title}" class="product-img">
+      <h3 class="product-title">${p.title}</h3>
+      <p class="product-price">$${p.price.toLocaleString()}</p>
+      <div class="quantity-selector">
+        <button class="qty-btn" onclick="changeQty(this, -1)">-</button>
+        <span class="qty">1</span>
+        <button class="qty-btn" onclick="changeQty(this, 1)">+</button>
+      </div>
+      <button class="btn-product">Agregar al carrito</button>
+    `;
+    slider.appendChild(card);
   });
+
+  section.appendChild(slider);
+
+  // Flechas
+  const prevBtn = document.createElement("button");
+  prevBtn.classList.add("slider-btn", "prev-btn");
+  prevBtn.textContent = "◀";
+  prevBtn.onclick = () => slider.scrollBy({ left: -260, behavior: "smooth" });
+
+  const nextBtn = document.createElement("button");
+  nextBtn.classList.add("slider-btn", "next-btn");
+  nextBtn.textContent = "▶";
+  nextBtn.onclick = () => slider.scrollBy({ left: 260, behavior: "smooth" });
+
+  section.appendChild(prevBtn);
+  section.appendChild(nextBtn);
+
+  productsContainer.appendChild(section);
 });
 
-// FUNCION CANTIDAD
+//CANTIDAD
 function changeQty(btn, delta) {
   const qtySpan = btn.parentElement.querySelector(".qty");
   let qty = parseInt(qtySpan.textContent);
