@@ -3,13 +3,11 @@ export function renderProductCards(products, containerId) {
     const container = document.getElementById(containerId);
     if (!container) return;
 
-    container.innerHTML = ''; // Limpiar contenido previo
+    container.innerHTML = '';
 
     products.forEach(product => {
-        // Crear card
         const card = document.createElement('div');
         card.classList.add('product-card');
-
         card.innerHTML = `
             <img src="${product.image}" alt="${product.title}" class="product-img">
             <h3 class="product-title">${product.title}</h3>
@@ -22,10 +20,8 @@ export function renderProductCards(products, containerId) {
             </div>
             <button class="btn-product add-cart">Agregar al carrito</button>
         `;
-
         container.appendChild(card);
 
-        // Botones de cantidad
         const decreaseBtn = card.querySelector('.decrease');
         const increaseBtn = card.querySelector('.increase');
         const qtySpan = card.querySelector('.qty');
@@ -41,7 +37,6 @@ export function renderProductCards(products, containerId) {
             qtySpan.textContent = qty + 1;
         });
 
-        // Agregar al carrito
         addCartBtn.addEventListener('click', () => {
             const cart = JSON.parse(localStorage.getItem('cart')) || [];
             const qty = parseInt(qtySpan.textContent);
@@ -50,15 +45,11 @@ export function renderProductCards(products, containerId) {
             if (existingIndex !== -1) {
                 cart[existingIndex].quantity += qty;
             } else {
-                cart.push({
-                    title: product.title,
-                    price: product.price,
-                    quantity: qty,
-                    image: product.image
-                });
+                cart.push({ ...product, quantity: qty });
             }
 
             localStorage.setItem('cart', JSON.stringify(cart));
+            window.dispatchEvent(new Event('cartUpdated'));
             alert(`${qty} x ${product.title} agregado al carrito`);
         });
     });

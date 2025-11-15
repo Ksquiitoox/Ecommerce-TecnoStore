@@ -14,10 +14,12 @@ body {
     background-color: #0f172a;
     margin: 0;
     padding: 10px 0;
+    overflow-x: auto;
 }
 
 .navbar-list li {
     margin: 0 15px;
+    flex-shrink: 0;
 }
 
 .navbar-list li a, .navbar-list li button {
@@ -30,7 +32,7 @@ body {
 }
 
 .navbar-list li button:hover, .navbar-list li a:hover {
-    color: #1e293b;
+    color: #38bdf8;
 }
 
 /* BANNER */
@@ -39,6 +41,10 @@ body {
     color: white;
     text-align: center;
     padding: 50px 20px;
+}
+
+.banner h2, .banner p {
+    margin: 10px 0;
 }
 
 .banner .btn-banner {
@@ -55,6 +61,94 @@ body {
 .banner .btn-banner:hover {
     background-color: #1e293b;
 }
+
+/* PRODUCT CARDS */
+.products-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.product-card {
+    background-color: #ffffff;
+    border-radius: 15px;
+    padding: 15px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+.product-img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.product-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 10px 0 5px;
+    color: #0f172a;
+}
+
+.product-price {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #38bdf8;
+    margin-bottom: 10px;
+}
+
+.btn-product {
+    width: 100%;
+    padding: 10px;
+    background-color: #38bdf8;
+    color: #0f172a;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.btn-product:hover {
+    background-color: #0ea5e9;
+}
+
+/* QUANTITY SELECTOR */
+.quantity-selector {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.qty-btn {
+    background-color: #38bdf8;
+    color: #0f172a;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.qty-btn:hover {
+    background-color: #0ea5e9;
+}
+
+.qty {
+    font-weight: bold;
+    min-width: 25px;
+    text-align: center;
+}
+
 /* FOOTER */
 footer {
     background-color:#0f172a; 
@@ -64,15 +158,16 @@ footer {
     margin-top: 50px; 
     margin-block-end: 50px;
 }
+
 /* RESPONSIVE */
 @media (max-width: 768px) {
-    .card {
-        width: 45%;
+    .product-card {
+        min-width: 45%;
     }
 }
 
 @media (max-width: 480px) {
-    .card {
-        width: 90%;
+    .product-card {
+        min-width: 90%;
     }
 }

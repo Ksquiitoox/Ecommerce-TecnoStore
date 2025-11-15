@@ -1,77 +1,90 @@
+// carrito.js
 document.addEventListener('DOMContentLoaded', () => {
     const container = document.getElementById('cart-container');
 
     function renderCart() {
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        container.innerHTML = '';
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
         if (cart.length === 0) {
-            container.innerHTML = "<p>El carrito está vacío.</p>";
+            container.innerHTML = '<p style="text-align:center;">Tu carrito está vacío</p>';
             return;
         }
 
-        let html = `<table class="cart-table">
-                        <tr>
-                            <th>Producto</th>
-                            <th>Precio</th>
-                            <th>Cantidad</th>
-                            <th>Total</th>
-                            <th>Acciones</th>
-                        </tr>`;
-
-        let totalCompra = 0;
+        let total = 0;
 
         cart.forEach((item, index) => {
-            const totalItem = item.price * item.quantity;
-            totalCompra += totalItem;
-            html += `<tr>
-                        <td>${item.title}</td>
-                        <td>$${item.price.toLocaleString()}</td>
-                        <td>
-                            <button class="decrease" data-index="${index}">-</button>
-                            <span>${item.quantity}</span>
-                            <button class="increase" data-index="${index}">+</button>
-                        </td>
-                        <td>$${totalItem.toLocaleString()}</td>
-                        <td><button class="remove" data-index="${index}">Eliminar</button></td>
-                     </tr>`;
-        });
+            total += item.price * item.quantity;
 
-        html += `<tr>
-                    <td colspan="3"><strong>Total</strong></td>
-                    <td colspan="2"><strong>$${totalCompra.toLocaleString()}</strong></td>
-                 </tr>`;
-        html += `</table>`;
+            const card = document.createElement('div');
+            card.classList.add('product-card');
 
-        container.innerHTML = html;
+            card.innerHTML = `
+                <img src="${item.image}" alt="${item.title}" class="product-img">
+                <h3 class="product-title">${item.title}</h3>
+                <p>Precio unitario: $${item.price.toLocaleString()}</p>
+                <div class="quantity-selector">
+                    <button class="qty-btn decrease">-</button>
+                    <span class="qty">${item.quantity}</span>
+                    <button class="qty-btn increase">+</button>
+                </div>
+                <p>Subtotal: $<span class="subtotal">${(item.price * item.quantity).toLocaleString()}</span></p>
+                <button class="btn-product remove-item">Eliminar</button>
+            `;
 
-        // Agregar eventos a botones
-        container.querySelectorAll('.increase').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const idx = btn.getAttribute('data-index');
-                cart[idx].quantity++;
-                localStorage.setItem('cart', JSON.stringify(cart));
-                renderCart();
-            });
-        });
+            container.appendChild(card);
 
-        container.querySelectorAll('.decrease').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const idx = btn.getAttribute('data-index');
-                if (cart[idx].quantity > 1) {
-                    cart[idx].quantity--;
-                    localStorage.setItem('cart', JSON.stringify(cart));
-                    renderCart();
+            // Botones de cantidad
+            const decreaseBtn = card.querySelector('.decrease');
+            const increaseBtn = card.querySelector('.increase');
+            const qtySpan = card.querySelector('.qty');
+            const subtotalSpan = card.querySelector('.subtotal');
+            const removeBtn = card.querySelector('.remove-item');
+
+            decreaseBtn.addEventListener('click', () => {
+                if (item.quantity > 1) {
+                    item.quantity--;
+                    qtySpan.textContent = item.quantity;
+                    subtotalSpan.textContent = (item.price * item.quantity).toLocaleString();
+                    updateCartStorage(cart);
+                    renderTotal(cart);
                 }
             });
-        });
 
-        container.querySelectorAll('.remove').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const idx = btn.getAttribute('data-index');
-                cart.splice(idx, 1);
-                localStorage.setItem('cart', JSON.stringify(cart));
+            increaseBtn.addEventListener('click', () => {
+                item.quantity++;
+                qtySpan.textContent = item.quantity;
+                subtotalSpan.textContent = (item.price * item.quantity).toLocaleString();
+                updateCartStorage(cart);
+                renderTotal(cart);
+            });
+
+            removeBtn.addEventListener('click', () => {
+                cart.splice(index, 1);
+                updateCartStorage(cart);
                 renderCart();
             });
         });
+
+        renderTotal(cart);
+    }
+
+    function renderTotal(cart) {
+        let totalDiv = document.getElementById('cart-total');
+        if (!totalDiv) {
+            totalDiv = document.createElement('div');
+            totalDiv.id = 'cart-total';
+            totalDiv.style.textAlign = 'center';
+            totalDiv.style.marginTop = '20px';
+            container.appendChild(totalDiv);
+        }
+
+        const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+        totalDiv.innerHTML = `<h3>Total: $${total.toLocaleString()}</h3>`;
+    }
+
+    function updateCartStorage(cart) {
+        localStorage.setItem('cart', JSON.stringify(cart));
     }
 
     renderCart();
