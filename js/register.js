@@ -30,6 +30,6 @@ document.addEventListener("DOMContentLoaded", () => {
     usuarios.push(nuevoUsuario);
     localStorage.setItem("usuarios", JSON.stringify(usuarios));
     alert(`Registro exitoso. ¡Bienvenido ${nombre}! Ahora podés iniciar sesión.`);
-    window.location.href = ".pages/Login.html";
+    window.location.href = "pages/Login.html";
   });
 });
