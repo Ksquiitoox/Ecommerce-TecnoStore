@@ -7,5 +7,5 @@ const navbarItems = [
   { title: "Login", url: "pages/Login.html" },
   { title: "Registro", url: "pages/Register.html" },
   { title: "Logout", url: "#", id: "logoutBtn" },
-  { title: "Carrito", url:"pages/Carrito.html", id: "cart-link" }
+  { title: "Carrito", url:"Carrito.html", id: "cart-link" }
 ];
