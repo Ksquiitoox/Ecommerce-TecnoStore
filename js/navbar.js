@@ -1,4 +1,4 @@
-    document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
   const navbarContainer = document.getElementById("navbar");
   if (!navbarContainer) return;
   const usuarioLogueado = JSON.parse(localStorage.getItem("usuarioLogueado"));
@@ -7,8 +7,7 @@
   const logoDiv = document.createElement("div");
   logoDiv.classList.add("logo");
   logoDiv.innerHTML = `
-    <img src="img/logo.png" alt="Logo TecnoStore">
-    <h1>TecnoStore</h1>
+    
   `;
   nav.appendChild(logoDiv);
   const ul = document.createElement("ul");
@@ -45,19 +44,6 @@
       window.location.href = "Login.html";
     });
   }
-  navbar.innerHTML = `
-        <ul class="nav.links">
-            ${navbarItems.map(item => {
-                if(item.id) return `<li><a href="${item.url}" id="${item.id}">${item.title}</a></li>`; 
-                return `<li><a href="${item.url}">${item.title}</a></li>`;
-            }).join('')}
-            <li>
-                <a href="carrito.html"> class="cart-link">
-                    🛒 Carrito (<span id="cart-count">0</span>)
-                </a>
-            </li>
-        </ul>
-    `;
 
     const cartCountSpan = document.getElementById('cart-count');
     // Función para actualizar contador del carrito
