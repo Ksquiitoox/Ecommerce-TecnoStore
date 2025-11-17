@@ -12,16 +12,24 @@ document.addEventListener("DOMContentLoaded", () => {
       alert("Por favor, completá todos los campos.");
       return;
     }
+    //Minimo 6 caracteres pa
+    if (password.length < 6) {
+      alert("La contraseña debe tener al menos 6 caracteres.");
+      return;
+    }
+    //Usuarios existentes
     const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+    //Verifico si ya existe email
     const existe = usuarios.some(u => u.email === email);
     if (existe) {
       alert("Este correo ya está registrado. Iniciá sesión o usá otro correo.");
       return;
     }
+    //Nuevo usuario
     const nuevoUsuario = { nombre, apellido, email, password, fecha };
     usuarios.push(nuevoUsuario);
     localStorage.setItem("usuarios", JSON.stringify(usuarios));
-    alert(`Registro exitoso. ¡Bienvenido ${nombre}!`);
-    window.location.href = "index.html";
+    alert(`Registro exitoso. ¡Bienvenido ${nombre}! Ahora podés iniciar sesión.`);
+    window.location.href = "Login.html";
   });
 });

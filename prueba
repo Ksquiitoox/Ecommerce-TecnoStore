@@ -1,101 +1,43 @@
-// carrito.js
-document.addEventListener('DOMContentLoaded', () => {
-    const container = document.getElementById('cart-container');
-
-    function renderCart() {
-        container.innerHTML = '';
-        const cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-        if (cart.length === 0) {
-            container.innerHTML = `
-                <p style="text-align:center; font-size:1.1rem; margin-top:20px;">
-                    🛒 Tu carrito está vacío
-                </p>
-            `;
-
-            // Limpio el total si existe
-            const totalDiv = document.getElementById('cart-total');
-            if (totalDiv) {
-                totalDiv.innerHTML = '';
-            }
-
-            // Aseguro que el contador de la navbar quede en 0
-            updateCartStorage(cart);
-            return;
-        }
-
-        cart.forEach((item, index) => {
-            const card = document.createElement('div');
-            card.classList.add('product-card');
-
-            card.innerHTML = `
-                <img src="${item.image}" alt="${item.title}" class="product-img">
-                <h3 class="product-title">${item.title}</h3>
-                <p>Precio unitario: $${item.price.toLocaleString()}</p>
-                <div class="quantity-selector">
-                    <button class="qty-btn decrease">-</button>
-                    <span class="qty">${item.quantity}</span>
-                    <button class="qty-btn increase">+</button>
-                </div>
-                <p>Subtotal: $<span class="subtotal">${(item.price * item.quantity).toLocaleString()}</span></p>
-                <button class="btn-product remove-item">Eliminar</button>
-            `;
-
-            container.appendChild(card);
-
-            const decreaseBtn = card.querySelector('.decrease');
-            const increaseBtn = card.querySelector('.increase');
-            const qtySpan = card.querySelector('.qty');
-            const subtotalSpan = card.querySelector('.subtotal');
-            const removeBtn = card.querySelector('.remove-item');
-
-            decreaseBtn.addEventListener('click', () => {
-                if (item.quantity > 1) {
-                    item.quantity--;
-                    qtySpan.textContent = item.quantity;
-                    subtotalSpan.textContent = (item.price * item.quantity).toLocaleString();
-                    updateCartStorage(cart);
-                    renderTotal(cart);
-                }
-            });
-
-            increaseBtn.addEventListener('click', () => {
-                item.quantity++;
-                qtySpan.textContent = item.quantity;
-                subtotalSpan.textContent = (item.price * item.quantity).toLocaleString();
-                updateCartStorage(cart);
-                renderTotal(cart);
-            });
-
-            removeBtn.addEventListener('click', () => {
-                cart.splice(index, 1);
-                updateCartStorage(cart);
-                renderCart();
-            });
-        });
-
-        renderTotal(cart);
+// register.js
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("RegisterForm");
+  if (!form) return;
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const nombre = document.getElementById("nombre").value.trim();
+    const apellido = document.getElementById("apellido").value.trim();
+    const email = document.getElementById("email").value.trim().toLowerCase();
+    const password = document.getElementById("password").value.trim();
+    const fecha = document.getElementById("fecha").value;
+    if (!nombre || !apellido || !email || !password || !fecha) {
+      alert("Por favor, completá todos los campos.");
+      return;
     }
-
-    function renderTotal(cart) {
-        let totalDiv = document.getElementById('cart-total');
-        if (!totalDiv) {
-            totalDiv = document.createElement('div');
-            totalDiv.id = 'cart-total';
-            totalDiv.style.textAlign = 'center';
-            totalDiv.style.marginTop = '20px';
-            container.appendChild(totalDiv);
-        }
-
-        const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-        totalDiv.innerHTML = `<h3>Total: $${total.toLocaleString()}</h3>`;
+    if (password.length < 6) {
+      alert("La contraseña debe tener al menos 6 caracteres.");
+      return;
     }
-
-    function updateCartStorage(cart) {
-        localStorage.setItem('cart', JSON.stringify(cart));
-        // Aviso a la navbar que cambió el carrito
-        window.dispatchEvent(new Event('cartUpdated'));
+    //Usuarios existentes
+    const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+    // Verificar si ya existe email
+    const existe = usuarios.some(u => u.email === email);
+    if (existe) {
+      alert("Ya existe un usuario registrado con ese correo electrónico.");
+      return;
     }
+    // Crear nuevo usuario
+    const nuevoUsuario = {
+      nombre,
+      apellido,
+      email,                // ya está en minúsculas
+      password,
+      fechaNacimiento: fecha
+    };
 
-    renderCart();
+    usuarios.push(nuevoUsuario);
+    localStorage.setItem("usuarios", JSON.stringify(usuarios));
+
+    alert("Registro exitoso. Ahora podés iniciar sesión.");
+    window.location.href = "Login.html";
+  });
 });
