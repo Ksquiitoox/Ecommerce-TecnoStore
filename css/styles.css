@@ -24,7 +24,7 @@ body {
     z-index: 100;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     animation: slideDown 1s ease-out forwards;
-    overflow-x: auto;
+    overflow-x: visible;
 }
 .logo {
     display: flex;
@@ -48,6 +48,7 @@ body {
     padding: 0;
     flex-wrap: nowrap;
     white-space: nowrap;
+    overflow: auto;
   }
   .nav-links li {
     flex-shrink: 0;
