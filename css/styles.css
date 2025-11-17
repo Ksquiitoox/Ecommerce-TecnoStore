@@ -287,6 +287,8 @@ body {
     padding: 5px 10px;
     cursor: pointer;
     font-weight: bold;
+    width: auto;
+    display: inline-block;
 }
 
 .qty-btn:hover {
