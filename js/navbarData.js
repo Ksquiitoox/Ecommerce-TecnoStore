@@ -6,6 +6,6 @@ const navbarItems = [
   { title: "Accesorios", url: "Accesorios.html" },
   { title: "Login", url: "Login.html" },
   { title: "Registro", url: "Register.html" },
-  { title: "Logout", url: "#", id: "logoutBtn" }
-  { title: "Carrito", url:"Carrito.html", id: "cart-link" },
+  { title: "Logout", url: "#", id: "logoutBtn" },
+  { title: "Carrito", url:"Carrito.html", id: "cart-link" }
 ];
