@@ -6,6 +6,6 @@ document.addEventListener("DOMContentLoaded", () => {
     e.preventDefault();
     localStorage.removeItem("usuarioLogueado");
     alert(`Cerraste sesión correctamente, Hasta la próxima, ${usuarioLogueado.nombre} 👋`);
-    window.location.href = "Login.html";
+    window.location.href = "pages/Login.html";
   });
 });

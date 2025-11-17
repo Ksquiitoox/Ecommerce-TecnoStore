@@ -7,18 +7,12 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    
     <div id="navbar"></div>
-    
     <h2 style="text-align:center; margin-top:20px;">Tu Carrito</h2>
-    
-
     <section id="cart-container" class="products-container"></section>
-
     <div id="cart-total" style="text-align:center; margin-top:20px;"></div>
     <!--<script type="module">
         const container = document.getElementById('cart-container');
-
         function renderCart() {
             container.innerHTML = '';
             const cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -26,7 +20,6 @@
                 container.innerHTML = '<p style="text-align:center;">Tu carrito está vacío</p>';
                 return;
             }
-
             cart.forEach((item, index) => {
                 const card = document.createElement('div');
                 card.classList.add('product-card');
@@ -43,13 +36,11 @@
                     <button class="btn-product remove-item">Eliminar</button>
                 `;
                 container.appendChild(card);
-
                 const decreaseBtn = card.querySelector('.decrease');
                 const increaseBtn = card.querySelector('.increase');
                 const qtySpan = card.querySelector('.qty');
                 const subtotalSpan = card.querySelector('.subtotal');
                 const removeBtn = card.querySelector('.remove-item');
-
                 decreaseBtn.addEventListener('click', () => {
                     if(item.quantity>1) item.quantity--;
                     qtySpan.textContent = item.quantity;
@@ -57,7 +48,6 @@
                     localStorage.setItem('cart', JSON.stringify(cart));
                     window.dispatchEvent(new Event('cartUpdated'));
                 });
-
                 increaseBtn.addEventListener('click', () => {
                     item.quantity++;
                     qtySpan.textContent = item.quantity;
@@ -65,7 +55,6 @@
                     localStorage.setItem('cart', JSON.stringify(cart));
                     window.dispatchEvent(new Event('cartUpdated'));
                 });
-
                 removeBtn.addEventListener('click', () => {
                     cart.splice(index, 1);
                     localStorage.setItem('cart', JSON.stringify(cart));
@@ -74,9 +63,7 @@
                 });
             });
         }
-
         renderCart();
-
     </script>-->
     <section class="footer">
     <p>© 2025 TecnoStore — Todos los derechos reservados</p>

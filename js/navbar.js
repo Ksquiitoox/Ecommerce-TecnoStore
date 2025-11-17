@@ -6,8 +6,8 @@ document.addEventListener("DOMContentLoaded", () => {
   //Detectar pagina
   const ruta = window.location.pathname;
   let currentPage = ruta.split("/").pop();
-  if (!currentPage) currentPage = "index.html";
-  const esHome = currentPage.toLowerCase() === "index.html";
+  if (!currentPage) currentPage = "pages/index.html";
+  const esHome = currentPage.toLowerCase() === "pages/index.html";
   //<nav>
   const nav = document.createElement("nav");
   nav.classList.add("navbar");
@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
       localStorage.removeItem("usuarioLogueado");
       localStorage.removeItem('cart');
       alert(`Cerraste sesión correctamente, Hasta la próxima, ${usuarioLogueado.nombre} 👋`);
-      window.location.href = "Login.html";
+      window.location.href = "pages/Login.html";
     });
   }    
 });

@@ -4,7 +4,7 @@
 
 **Materia:** Aplicaciones Web I
 
-**Repositorio:** https://github.com/Ksquiitoox/ecommerce-app.git
+**Repositorio:** https://github.com/Ksquiitoox/Ecommerce-TecnoStore.git
 
 **Descripción:** Proyecto E-commerce Tienda de Productos de Tecnología.
 
