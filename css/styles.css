@@ -14,11 +14,16 @@ body {
 /* NAVBAR */
 .navbar-list {
     display: flex;
-    justify-content: center;
-    list-style: none;
+    justify-content: space-between;
+    align-items: center;
     background-color: #0f172a;
-    margin: 0;
-    padding: 10px 0;
+    padding: 0px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    animation: slideDown 1s ease-out forwards;
     overflow-x: auto;
 }
 
