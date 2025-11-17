@@ -8,7 +8,7 @@
 </head>
 <body>
   <!--NAVBAR-->
-  <nav id="navbar"></nav>
+  <div id="navbar"></div>
   <!--CONTENIDO PRINCIPAL-->
   <section class="banner" style="background-image: url('https://images.unsplash.com/photo-1498050108023-c5249f4df085');">
     <div class="banner-content">
@@ -19,24 +19,32 @@
   <!--PRODUCTOS-->
   <section style="text-align:center; padding:50px 20px;">
     <h2>Nuestras Laptops</h2>
-    <div style="display:flex; justify-content:center; flex-wrap:wrap; gap:30px; margin-top:30px;">
-      <div style="background-color:white; border-radius:10px; width:260px; box-shadow:0 0 10px rgba(0,0,0,0.1); padding:15px;">
-        <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8" alt="Laptop 1" class="sub-img">
-        <h3>Notebook Pro 15"</h3>
-        <p>$750.000</p>
-      </div>
-      <div style="background-color:white; border-radius:10px; width:260px; box-shadow:0 0 10px rgba(0,0,0,0.1); padding:15px;">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0aXhzi_CKAC8UWhtrbbKTvCC3fK8n3gtjow&s" alt="Laptop 2" class="sub-img">
-        <h3>UltraBook X</h3>
-        <p>$890.000</p>
-      </div>
-      <div style="background-color:white; border-radius:10px; width:260px; box-shadow:0 0 10px rgba(0,0,0,0.1); padding:15px;">
-        <img src="https://media.medion.com/cms/medion/uk/Beast-X25-Laptop_WP-Bg.jpg" alt="Laptop 3" class="sub-img">
-        <h3>Gaming Beast</h3>
-        <p>$1.200.000</p>
-      </div>
-    </div>
+    <div id="products-container" class="products-container"></div>
   </section>
+  <script type="module">
+    import {renderProductCards} from './js/cards.js';
+    const Laptops = [
+      {
+        title: 'Notebook Pro 15"',
+        description: 'Intel Core i7, 8GB RAM, SSD 1TB. Ideal para trabajo y estudio.',
+        price: 750000,
+        image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8"
+      },
+      {
+        title: 'UltraBook X',
+        description: 'Liviana, silenciosa y con batería de larga duración.',
+        price: 890000,
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0aXhzi_CKAC8UWhtrbbKTvCC3fK8n3gtjow&s"
+      },
+      {
+        title: 'Gaming Beast',
+        description: 'Gráficos dedicados y alto rendimiento para gaming exigente.',
+        price: 1200000,
+        image: "https://media.medion.com/cms/medion/uk/Beast-X25-Laptop_WP-Bg.jpg"
+      }
+    ];
+    renderProductCards(Laptops, 'products-container');
+  </script>
   <!--FOOTER-->
   <section class="footer">
     <p>© 2025 TecnoStore — Todos los derechos reservados</p>
@@ -44,6 +52,5 @@
   <!--SCRIPTS-->
   <script src="js/navbarData.js"></script>
   <script src="js/navbar.js"></script>
-  <script src="js/logout.js"></script>
 </body>
 </html>
