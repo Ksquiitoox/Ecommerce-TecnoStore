@@ -308,8 +308,7 @@ body {
     color:white; 
     text-align:center; 
     padding:15px; 
-    margin-top: 50px; 
-    margin-block-end: 50px;
+    margin-top: 50px;
   }
   /* RESPONSIVE */
 @media (max-width: 768px) {
