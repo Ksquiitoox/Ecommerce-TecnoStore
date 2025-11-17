@@ -1,5 +1,4 @@
-// cards.js
-export function renderProductCards(products, containerId) {
+function renderProductCards(products, containerId) {
     const container = document.getElementById(containerId);
     if (!container) return;
 
