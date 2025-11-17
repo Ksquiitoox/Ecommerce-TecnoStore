@@ -7,7 +7,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const logoDiv = document.createElement("div");
   logoDiv.classList.add("logo");
   logoDiv.innerHTML = `
-    
+    <img src="img/logo.png" alt="Logo TecnoStore">
+    <h1>TecnoStore</h1>
   `;
   nav.appendChild(logoDiv);
   const ul = document.createElement("ul");
@@ -44,24 +45,4 @@ document.addEventListener("DOMContentLoaded", () => {
       window.location.href = "Login.html";
     });
   }
-
-    const cartCountSpan = document.getElementById('cart-count');
-    // Función para actualizar contador del carrito
-    function updateCartCount() {
-        const cart = JSON.parse(localStorage.getItem('cart')) || [];
-        const count = cart.reduce((sum, item) => sum + item.quantity, 0);
-        if (cartCountSpan) cartCountSpan.textContent = count;
-    }
-
-    updateCartCount();
-    // Escuchar evento personalizado "cartUpdated" para actualizar contador en tiempo real
-    window.addEventListener('cartUpdated', updateCartCount);
-    // Logout: limpiar localStorage y redirigir a Login
-    const logoutBtn = document.getElementById('logoutBtn');
-    if(logoutBtn){
-        logoutBtn.addEventListener('click', () => {
-            localStorage.removeItem('cart');
-            window.location.href = 'Login.html';
-        });
-    }
 });
