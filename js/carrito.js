@@ -1,4 +1,3 @@
-// carrito.js
 document.addEventListener('DOMContentLoaded', () => {
     const container = document.getElementById('cart-container');
 
@@ -7,15 +6,22 @@ document.addEventListener('DOMContentLoaded', () => {
         const cart = JSON.parse(localStorage.getItem('cart')) || [];
 
         if (cart.length === 0) {
-            container.innerHTML = '<p style="text-align:center;">Tu carrito está vacío</p>';
+            container.innerHTML = `
+                <p style="text-align:center; font-size:1.1rem; margin-top:20px;">
+                    🛒 Tu carrito está vacío
+                </p>
+            `;
+            //Elimino total
+            const totalDiv = document.getElementById('cart-total');
+            if (totalDiv) {
+                totalDiv.innerHTML = '';
+            }
+
+            //Contador 0
+            updateCartStorage(cart);
             return;
         }
-
-        let total = 0;
-
         cart.forEach((item, index) => {
-            total += item.price * item.quantity;
-
             const card = document.createElement('div');
             card.classList.add('product-card');
 
@@ -51,6 +57,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
 
+            decreaseBtn.addEventListener('click', () => {
+                if (item.quantity > 1) {
+                    item.quantity--;
+                    qtySpan.textContent = item.quantity;
+                    subtotalSpan.textContent = (item.price * item.quantity).toLocaleString();
+                    updateCartStorage(cart);
+                    renderTotal(cart);
+                }
+            });
             increaseBtn.addEventListener('click', () => {
                 item.quantity++;
                 qtySpan.textContent = item.quantity;
@@ -85,6 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateCartStorage(cart) {
         localStorage.setItem('cart', JSON.stringify(cart));
+        window.dispatchEvent(new Event('cartUpdated'));
     }
 
     renderCart();
