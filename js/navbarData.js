@@ -4,6 +4,7 @@ const navbarItems = [
   { title: "Laptops", url: "Laptops.html" },
   { title: "Smartphones", url: "Smartphones.html" },
   { title: "Accesorios", url: "Accesorios.html" },
+  { title: "Carrito", url:"Carrito.html", id: "cart-link" },
   { title: "Login", url: "Login.html" },
   { title: "Registro", url: "Register.html" },
   { title: "Logout", url: "#", id: "logoutBtn" }

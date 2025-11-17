@@ -3,35 +3,61 @@ document.addEventListener("DOMContentLoaded", () => {
   if (!navbarContainer) return;
 
   const usuarioLogueado = JSON.parse(localStorage.getItem("usuarioLogueado"));
-  
+  //Detectar pagina
+  const ruta = window.location.pathname;
+  let currentPage = ruta.split("/").pop();
+  if (!currentPage) currentPage = "index.html";
+  const esHome = currentPage.toLowerCase() === "index.html";
+  //<nav>
   const nav = document.createElement("nav");
   nav.classList.add("navbar");
- 
+  //Logo
   const logoDiv = document.createElement("div");
   logoDiv.classList.add("logo");
   logoDiv.innerHTML = `
     <img src="img/logo.png" alt="Logo TecnoStore">
     <h1>TecnoStore</h1>
   `;
-
   nav.appendChild(logoDiv);
-
+  //Ul contenedor Links
   const ul = document.createElement("ul");
   ul.classList.add("nav-links");
 
   navbarItems.forEach(item => {
+    //Filtro Home
+    if (esHome) {
+      //Muestro Categorias - Login - Registro
+      if (
+        item.title !== "Categorías" &&
+        item.title !== "Login" &&
+        item.title !== "Registro"
+      ) {
+        return;
+      }
+    }
+    //Filtro Login/Logout
     if (usuarioLogueado && (item.title === "Login" || item.title === "Registro")) return;
     if (!usuarioLogueado && item.title === "Logout") return;
     
     const li = document.createElement("li");
     const a = document.createElement("a");
-    a.textContent = item.title;
     a.href = item.url;
+    //Link Carrito
+    if (item.id === "cart-link"){
+        a.id = item.id;
+        a.innerHTML = `🛒 Carrito (<span id="cart-count">0</span>)`;
+    } else {
+      a.textContent = item.title;
+    }
+    //ID
+    if (item.id && item.id !== "cart-link") {
+      a.id = item.id;
+    }
 
-    if (item.id) a.id = item.id;
-
-    const currentPage = window.location.pathname.split("/").pop();
-    if (a.href.includes(currentPage)) a.classList.add("active");
+    // Marcar link activo
+    if (item.url.toLowerCase() === currentPage.toLowerCase()) {
+      a.classList.add("active");
+    }
     
     li.appendChild(a);
     ul.appendChild(li);
@@ -39,7 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   nav.appendChild(ul);
   navbarContainer.appendChild(nav);
-
+  //Saludo
   if (usuarioLogueado) {
     const saludo = document.createElement("span");
     saludo.textContent = `👋 Hola, ${usuarioLogueado.nombre}`;
@@ -48,6 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
     saludo.style.color = "#38bdf8";
     logoDiv.appendChild(saludo);
   }
+  //Carrito contador
   const cartCountSpan = document.getElementById('cart-count');
     // Función para actualizar contador del carrito
     function updateCartCount() {
