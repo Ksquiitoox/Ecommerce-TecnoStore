@@ -261,6 +261,12 @@ body {
   margin-bottom: 20px;
   color: #0f172a;
 }
+.categoria-card {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  cursor: pointer;
+}
 /* QUANTITY SELECTOR */
 .quantity-selector {
     display: flex;
