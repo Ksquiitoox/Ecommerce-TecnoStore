@@ -19,26 +19,32 @@
   <!--PRODUCTOS-->
   <section style="text-align:center; padding:50px 20px;">
     <h2>Nuestros Accesorios</h2>
-    <div id="Container"
-    
-    style="display:flex; justify-content:center; flex-wrap:wrap; gap:30px; margin-top:30px;">
-      <div style="background-color:white; border-radius:10px; width:260px; box-shadow:0 0 10px rgba(0,0,0,0.1); padding:15px;">
-        <img src="https://istarmax.com/wp-content/uploads/2024/04/Starmax-Product-Range-Summer-2024-2.webp" alt="Accesorio 1" class="sub-img">
-        <h3>Smartwatchs Pro</h3>
-        <p>$45.000</p>
-      </div>
-      <div style="background-color:white; border-radius:10px; width:260px; box-shadow:0 0 10px rgba(0,0,0,0.1); padding:15px;">
-        <img src="https://smarttucuman.com/img/Public/1130/43425-producto-solarmax-combo-gamer-4-en-1-rgbb.jpg" alt="Accesorio 2" class="sub-img">
-        <h3>Kit Gamer Pc Ex-450</h3>
-        <p>$60.000</p>
-      </div>
-      <div style="background-color:white; border-radius:10px; width:260px; box-shadow:0 0 10px rgba(0,0,0,0.1); padding:15px;">
-        <img src="https://imagenes.elpais.com/resizer/v2/QZTUJNWHPFGR5LTVPOFJZKCBBU.png?auth=0d8390af677bfaefdf5e239f5a41c2c6cddc80473bdaf867cb7a43170c246043&width=1960" alt="Accesorio 3" class="sub-img">
-        <h3>Cargador Carga Rápida</h3>
-        <p>$50.000</p>
-      </div>
-    </div>
+    <div id="products-container" class="products-container"></div>
   </section>
+  <script type="module">
+    import {renderProductCards} from './js/cards.js';
+    const Accesorios = [
+      {
+        title: 'Smartwatchs Pro',
+        description: 'Relojes inteligentes con monitoreo de actividad y notificaciones.',
+        price: 45000,
+        image: 'https://istarmax.com/wp-content/uploads/2024/04/Starmax-Product-Range-Summer-2024-2.webp'
+      },
+      {
+        title: 'Kit Gamer Pc Ex-450',
+        description: 'Combo gamer 4 en 1: teclado, mouse, auriculares y mousepad RGB.',
+        price: 60000,
+        image: 'https://smarttucuman.com/img/Public/1130/43425-producto-solarmax-combo-gamer-4-en-1-rgbb.jpg'
+      },
+      {
+        title: 'Cargador Carga Rápida',
+        description: 'Cargador TurboPower 65W, ideal para carga rápida segura.',
+        price: 50000,
+        image: 'https://imagenes.elpais.com/resizer/v2/QZTUJNWHPFGR5LTVPOFJZKCBBU.png?auth=0d8390af677bfaefdf5e239f5a41c2c6cddc80473bdaf867cb7a43170c246043&width=1960'
+      }
+    ];
+    renderProductCards(Accesorios, 'products-container');
+  </script>
   <!--FOOTER-->
   <section class="footer">
     <p>© 2025 TecnoStore — Todos los derechos reservados</p>
