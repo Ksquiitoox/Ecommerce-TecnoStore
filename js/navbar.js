@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
       localStorage.removeItem("usuarioLogueado");
       localStorage.removeItem('cart');
       alert(`Cerraste sesión correctamente, Hasta la próxima, ${usuarioLogueado.nombre} 👋`);
-      window.location.href = "Login.html";
+      window.location.href = ".pages/Login.html";
     });
   }    
 });
