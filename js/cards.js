@@ -1,4 +1,4 @@
-function renderProductCards(products, containerId) {
+export function renderProductCards(products, containerId) {
     const container = document.getElementById(containerId);
     if (!container) return;
 

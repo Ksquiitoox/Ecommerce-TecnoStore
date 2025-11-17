@@ -19,15 +19,8 @@
   </section>
   <!--PRODUCTOS-->
   <section class="products-container" id="products-container"></section>
-  <!--FOOTER-->
-  <section class="footer">
-    <p>© 2025 TecnoStore — Todos los derechos reservados</p>
-  </section>
-  <!--SCRIPTSA-->
-  <script src="js/navbarData.js"></script>
-  <script src="js/navbar.js"></script>
-  <script src="js/cards.js"></script>
-  <script>
+  <script type="module">
+    import {renderProductCards} from './js/cards.js'
     const products = [
         {
             title: 'Notebook Pro 15"',
@@ -49,6 +42,14 @@
         }
     ];
     renderProductCards(products, 'products-container');
-</script>
+    </script>
+  <!--FOOTER-->
+  <section class="footer">
+    <p>© 2025 TecnoStore — Todos los derechos reservados</p>
+  </section>
+  <!--SCRIPTSA-->
+  <script src="js/navbarData.js"></script>
+  <script src="js/navbar.js"></script>
+  <script src="js/cards.js"></script>
 </body>
 </html>
