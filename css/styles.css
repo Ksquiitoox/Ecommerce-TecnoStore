@@ -253,7 +253,6 @@ body {
 /*CARRIT*/
 #cart-container {
   display: flex;
-  flex-direction: column;
   gap: 20px;
   max-width: 700px;      /* ancho máximo del bloque */
   margin: 20px auto 40px;/* centrado horizontal */
