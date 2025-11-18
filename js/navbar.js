@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
     <span class="menu-toggle-icon">☰</span>
     <span>Categorías</span>
   `;
+  logoDiv.prepend(menuToggle);
   nav.appendChild(logoDiv);
   //Ul contenedor Links
   const ul = document.createElement("ul");
