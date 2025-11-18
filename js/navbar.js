@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   navbarItems.forEach(item => {
     //Filtro Home
-    if (esHome) {
+    if (!usuarioLogueado && esHome) {
       //Muestro Categorias - Login - Registro
       if (
         item.title !== "Categorías" &&
