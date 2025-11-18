@@ -23,17 +23,12 @@
     <div class="slider-wrapper">
       <button class="slider-arrow" id="destacados-prev">⟨</button>
       <div id="destacados-slider" class="slider-container">
-        <!-- Acá se van a insertar las cards de productos destacados -->
+        <!--Cards roductos destacados-->
       </div>
       <button class="slider-arrow" id="destacados-next">⟩</button>
     </div>
   </section>
-  <!-- PRODUCTOS POR CATEGORÍA EN GRID -->
-  <section style="text-align:center; padding:20px 20px 40px;">
-    <h2>Productos por categoría</h2>
-    <div id="products-container" class="products-container"></div>
-  </section>
-  <!-- SCRIPTS PRODUCTOS (JSON + CARRUSEL + GRID) -->
+  <!--SCRIPTS PRODUCTOS-->
   <script type="module">
     import { renderProductCards } from './js/cards.js';
     import { getProductos } from './js/productosService.js';
@@ -45,21 +40,10 @@
         const productos = await getProductos();
         //DESTACADOS
         renderProductCards(productos, 'destacados-slider');
-        //HOME: 3 productos por categorIA
-        const categorias = ['Laptops', 'Smartphones', 'Accesorios'];
-        let productosHome = [];
-        categorias.forEach(cat => {
-          const porCategoria = productos
-            .filter(p => p.category === cat)
-            .slice(0, 3);
-          productosHome = productosHome.concat(porCategoria);
-        });
-        renderProductCards(productosHome, 'products-container');
       } catch (error) {
         console.error(error);
-        const container = document.getElementById('products-container');
-        if (container) {
-          container.textContent = 'No se pudieron cargar los productos.';
+        if (slider) {
+          slider.textContent = 'No se pudieron cargar los productos.';
         }
       }
     })();
