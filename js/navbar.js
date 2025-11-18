@@ -13,8 +13,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const logoDiv = document.createElement("div");
   logoDiv.classList.add("logo");
   logoDiv.innerHTML = `
-    <img src="/img/logo.png" alt="Logo TecnoStore" url: /index.html>
+  <a href="/index.html" class="logo-link">
+    <img src="/img/logo.png" alt="Logo TecnoStore">
     <h1>TecnoStore</h1>
+  </a>
+
   `;
   //BTN CATEGORIAS
   const menuToggle = document.createElement("button");
