@@ -328,8 +328,9 @@ body {
   background: #e2e8f0;
 }
 .slider-container .product-card {
-  min-width: 260px;
-  max-width: 260px;
+  flex: 0 0 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 /*flechas*/
 .slider-arrow {
