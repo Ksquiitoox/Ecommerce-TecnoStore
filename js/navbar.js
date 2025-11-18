@@ -16,6 +16,15 @@ document.addEventListener("DOMContentLoaded", () => {
     <img src="/img/logo.png" alt="Logo TecnoStore">
     <h1>TecnoStore</h1>
   `;
+  //BTN CATEGORIAS
+  const menuToggle = document.createElement("button");
+  menuToggle.classList.add("menu-toggle");
+  menuToggle.setAttribute("aria-label", "Categorías");
+  //Icono tougle
+  menuToggle.innerHTML = `
+    <span class="menu-toggle-icon">☰</span>
+    <span>Categorías</span>
+  `;
   nav.appendChild(logoDiv);
   //Ul contenedor Links
   const ul = document.createElement("ul");
@@ -60,15 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ul.appendChild(li);
   });
   nav.appendChild(ul);
-  //BTN CATEGORIAS
-  const menuToggle = document.createElement("button");
-  menuToggle.classList.add("menu-toggle");
-  menuToggle.setAttribute("aria-label", "Categorías");
-  //Icono tougle
-  menuToggle.innerHTML = `
-    <span class="menu-toggle-icon">☰</span>
-    <span>Categorías</span>
-  `;
+  
   //Menu de categorias
   const moreMenu = document.createElement("div");
   moreMenu.classList.add("more-menu");
@@ -82,7 +83,6 @@ document.addEventListener("DOMContentLoaded", () => {
     link.textContent = item.title;
     moreMenu.appendChild(link);
   });
-  nav.appendChild(menuToggle);
   nav.appendChild(moreMenu);
   // Agregar toda la navbar al contenedor
   navbarContainer.appendChild(nav);
