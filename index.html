@@ -30,7 +30,7 @@
         categorias.forEach(cat => {
           const porCategoria = productos
             .filter(p => p.category === cat)
-            .slice(0, 3); // hasta 3 por categoría
+            .slice(0, 3);//3 por categoría
           productosHome = productosHome.concat(porCategoria);
         });
         renderProductCards(productosHome, 'products-container');
