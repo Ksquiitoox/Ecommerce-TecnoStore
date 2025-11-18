@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const logoDiv = document.createElement("div");
   logoDiv.classList.add("logo");
   logoDiv.innerHTML = `
-    <img src="/img/logo.png" alt="Logo TecnoStore">
+    <img src="/img/logo.png" alt="Logo TecnoStore" url: /index.html>
     <h1>TecnoStore</h1>
   `;
   //BTN CATEGORIAS
