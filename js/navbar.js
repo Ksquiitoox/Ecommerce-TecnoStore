@@ -14,8 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
   logoDiv.classList.add("logo");
   logoDiv.innerHTML = `
   <a href="/index.html" class="logo-link">
-    <img src="/img/logo.png" alt="Logo TecnoStore"><h1>TecnoStore</h1>
-  </a>
+    <img src="/img/logo.png" alt="Logo TecnoStore"><h1>TecnoStore</h1></a>
   `;
   //BTN CATEGORIAS
   const menuToggle = document.createElement("button");
