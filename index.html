@@ -30,16 +30,31 @@
   </section>
   <!--SCRIPTS PRODUCTOS-->
   <script type="module">
-    import { renderProductCards } from './js/cards.js';
+  import { renderProductCards } from './js/cards.js';
     import { getProductos } from './js/productosService.js';
-    const slider = document.getElementById('destacados-slider');
+    const slider  = document.getElementById('destacados-slider');
     const prevBtn = document.getElementById('destacados-prev');
     const nextBtn = document.getElementById('destacados-next');
+    let currentIndex = 0;
+    function contenedorDeslizable(nuevoIndex) {
+      const cards = slider.querySelectorAll('.product-card');
+      if (!cards.length) return;
+      const total = cards.length;
+      if (nuevoIndex < 0) nuevoIndex = total - 1;
+      if (nuevoIndex >= total) nuevoIndex = 0;
+      currentIndex = nuevoIndex;
+      const ancho = slider.clientWidth; // 1 card = 100% del ancho del slider
+      slider.scrollTo({
+        left: ancho * currentIndex,
+        behavior: 'smooth'
+      });
+    }
     (async () => {
       try {
         const productos = await getProductos();
-        //DESTACADOS
+        //Destacados
         renderProductCards(productos, 'destacados-slider');
+        contenedorDeslizable(0);
       } catch (error) {
         console.error(error);
         if (slider) {
@@ -48,16 +63,11 @@
       }
     })();
     //Flechas
-    const scrollAmount = 300;
     if (prevBtn && nextBtn && slider) {
-      prevBtn.addEventListener('click', () => {
-        slider.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-      });
-      nextBtn.addEventListener('click', () => {
-        slider.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-      });
+      prevBtn.addEventListener('click', () => contenedorDeslizable(currentIndex - 1));
+      nextBtn.addEventListener('click', () => contenedorDeslizable(currentIndex + 1));
     }
-    </script>
+  </script>
   <!--FOOTER-->
   <section class="footer">
     <p>© 2025 TecnoStore — Todos los derechos reservados</p>
