@@ -56,12 +56,35 @@ document.addEventListener("DOMContentLoaded", () => {
     if (item.url.toLowerCase() === ruta.toLowerCase()) {
       a.classList.add("active");
     }
-    
     li.appendChild(a);
     ul.appendChild(li);
   });
-
   nav.appendChild(ul);
+  //BTN CATEGORIAS
+  const menuToggle = document.createElement("button");
+  menuToggle.classList.add("menu-toggle");
+  menuToggle.setAttribute("aria-label", "Categorías");
+  //Icono tougle
+  menuToggle.innerHTML = `
+    <span class="menu-toggle-icon">☰</span>
+    <span>Categorías</span>
+  `;
+  //Menu de categorias
+  const moreMenu = document.createElement("div");
+  moreMenu.classList.add("more-menu");
+  //categorias al menú
+  const categorias = navbarItems.filter(item =>
+    ["Laptops", "Smartphones", "Accesorios"].includes(item.title)
+  );
+  categorias.forEach(item => {
+    const link = document.createElement("a");
+    link.href = item.url;
+    link.textContent = item.title;
+    moreMenu.appendChild(link);
+  });
+  nav.appendChild(menuToggle);
+  nav.appendChild(moreMenu);
+  // Agregar toda la navbar al contenedor
   navbarContainer.appendChild(nav);
   //Saludo
   if (usuarioLogueado) {
@@ -93,5 +116,16 @@ document.addEventListener("DOMContentLoaded", () => {
       alert(`Cerraste sesión correctamente, Hasta la próxima, ${usuarioLogueado.nombre} 👋`);
       window.location.href = "/pages/Login.html";
     });
-  }    
+  }
+  //menu categorias
+  menuToggle.addEventListener("click", (e) => {
+    e.stopPropagation();//que no cierre al hacer clic ahi
+    moreMenu.classList.toggle("open");
+  });
+  //Cerrar al clickear afuera
+  document.addEventListener("click", () => {
+    moreMenu.classList.remove("open");
+  });
+  //Evitar cerrar con clic derecho
+  moreMenu.addEventListener("click", (e) => e.stopPropagation());
 });
