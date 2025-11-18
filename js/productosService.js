@@ -8,7 +8,7 @@ export async function getProductos() {
   const data = await respuesta.json();
   return data;
 }
-
+//Por categoria
 export async function getProductosPorCategoria(categoria) {
   const productos = await getProductos();
   return productos.filter(p => p.category === categoria);

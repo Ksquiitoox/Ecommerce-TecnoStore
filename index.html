@@ -20,28 +20,29 @@
   <!--PRODUCTOS-->
   <section class="products-container" id="products-container"></section>
   <script type="module">
-    import {renderProductCards} from './js/cards.js'
-    const products = [
-        {
-            title: 'Notebook Pro 15"',
-            description: 'i7, 8GB RAM, Disco SSD 1TB',
-            price: 750000,
-            image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8"
-        },
-        {
-            title: 'OnePlus 11 Concept',
-            description: 'Snapdragon 680, 8GB RAM, 126ROM',
-            price: 450000,
-            image: "https://i.blogs.es/3de3fe/op/1366_2000.webp"
-        },
-        {
-            title: 'Cargador Carga Rápida',
-            description: 'TurboPower 65W, 7.1Ampers',
-            price: 50000,
-            image: "https://imagenes.elpais.com/resizer/v2/QZTUJNWHPFGR5LTVPOFJZKCBBU.png?auth=0d8390af677bfaefdf5e239f5a41c2c6cddc80473bdaf867cb7a43170c246043&width=1960"
+    import { renderProductCards } from './js/cards.js';
+    import { getProductos } from './js/productosService.js';
+    (async () => {
+      try {
+        const productos = await getProductos();
+        const categorias = ['Laptops', 'Smartphones', 'Accesorios'];
+        let productosHome = [];
+        categorias.forEach(cat => {
+          const porCategoria = productos
+            .filter(p => p.category === cat)
+            .slice(0, 3); // hasta 3 por categoría
+          productosHome = productosHome.concat(porCategoria);
+        });
+        renderProductCards(productosHome, 'products-container');
+      }
+      catch (error) {
+      console.error(error);
+      const container = document.getElementById('products-container');
+      if (container) {
+        container.textContent = 'No se pudieron cargar los productos.';
         }
-    ];
-    renderProductCards(products, 'products-container');
+      }
+    })();
     </script>
   <!--FOOTER-->
   <section class="footer">

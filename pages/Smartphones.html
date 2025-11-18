@@ -21,30 +21,22 @@
     <h2>Nuestros Smartphones</h2>
     <div id="products-container" class="products-container"></div>
   </section>
-    <script type="module">
-      import {renderProductCards} from '../js/cards.js';
-      const Smartphones = [
-        {
-        title: 'OnePlus 11 Concept',
-        description: 'Pantalla fluida, gran rendimiento y carga rápida.',
-        price: 450000,
-        image: "https://i.blogs.es/3de3fe/op/1366_2000.webp"
-        },
-        {
-        title: 'Unihertz Luna',
-        description: 'Diseño único con luces traseras y gran batería.',
-        price: 1200000,
-        image: "https://i.blogs.es/a957c3/nothing/1366_2000.webp"
-        },
-        {
-        title: 'Realme GT3',
-        description: 'Potencia y carga ultrarrápida para el uso diario.',
-        price: 690000,
-        image: "https://i.blogs.es/5582e9/realme-gt3/1366_2000.webp"
+  <script type="module">
+  import { renderProductCards } from '../js/cards.js';
+    import { getProductosPorCategoria } from '../js/productosService.js';
+    (async () => {
+      try {
+        const smartphones = await getProductosPorCategoria('Smartphones');
+        renderProductCards(smartphones, 'products-container');
+      } catch (error) {
+        console.error(error);
+        const container = document.getElementById('products-container');
+        if (container) {
+          container.textContent = 'No se pudieron cargar los smartphones.';
         }
-      ];
-      renderProductCards(Smartphones, 'products-container');
-    </script>
+      }
+    })();
+  </script>
   <!--FOOTER-->
   <section class="footer">
     <p>© 2025 TecnoStore — Todos los derechos reservados</p>

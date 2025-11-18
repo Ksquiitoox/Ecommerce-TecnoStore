@@ -22,28 +22,20 @@
     <div id="products-container" class="products-container"></div>
   </section>
   <script type="module">
-    import {renderProductCards} from '../js/cards.js';
-    const Accesorios = [
-      {
-        title: 'Smartwatchs Pro',
-        description: 'Relojes inteligentes con monitoreo de actividad y notificaciones.',
-        price: 45000,
-        image: 'https://istarmax.com/wp-content/uploads/2024/04/Starmax-Product-Range-Summer-2024-2.webp'
-      },
-      {
-        title: 'Kit Gamer Pc Ex-450',
-        description: 'Combo gamer 4 en 1: teclado, mouse, auriculares y mousepad RGB.',
-        price: 60000,
-        image: 'https://smarttucuman.com/img/Public/1130/43425-producto-solarmax-combo-gamer-4-en-1-rgbb.jpg'
-      },
-      {
-        title: 'Cargador Carga Rápida',
-        description: 'Cargador TurboPower 65W, ideal para carga rápida segura.',
-        price: 50000,
-        image: 'https://imagenes.elpais.com/resizer/v2/QZTUJNWHPFGR5LTVPOFJZKCBBU.png?auth=0d8390af677bfaefdf5e239f5a41c2c6cddc80473bdaf867cb7a43170c246043&width=1960'
+  import { renderProductCards } from '../js/cards.js';
+    import { getProductosPorCategoria } from '../js/productosService.js';
+    (async () => {
+      try {
+        const Accesorios = await getProductosPorCategoria('Accesorios');
+        renderProductCards(Accesorios, 'products-container');
+      } catch (error) {
+        console.error(error);
+        const container = document.getElementById('products-container');
+        if (container) {
+          container.textContent = 'No se pudieron cargar los Acceosorios.';
+        }
       }
-    ];
-    renderProductCards(Accesorios, 'products-container');
+    })();
   </script>
   <!--FOOTER-->
   <section class="footer">

@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "title": "Notebook Pro 15\"",
+    "description": "Intel Core i7, 8GB RAM, SSD 1TB. Ideal para trabajo y estudio.",
+    "price": 750000,
+    "image": "https://images.unsplash.com/photo-1517336714731-489689fd1ca8",
+    "category": "Laptops"
+  },
+  {
+    "id": 2,
+    "title": "UltraBook X",
+    "description": "Liviana, silenciosa y con batería de larga duración.",
+    "price": 890000,
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0aXhzi_CKAC8UWhtrbbKTvCC3fK8n3gtjow&s",
+    "category": "Laptops"
+  },
+  {
+    "id": 3,
+    "title": "Gaming Beast",
+    "description": "Gráficos dedicados y alto rendimiento para gaming exigente.",
+    "price": 1200000,
+    "image": "https://media.medion.com/cms/medion/uk/Beast-X25-Laptop_WP-Bg.jpg",
+    "category": "Laptops"
+  },
+  {
+    "id": 4,
+    "title": "OnePlus 11 Concept",
+    "description": "Pantalla fluida, gran rendimiento y carga rápida.",
+    "price": 450000,
+    "image": "https://i.blogs.es/3de3fe/op/1366_2000.webp",
+    "category": "Smartphones"
+  },
+  {
+    "id": 5,
+    "title": "Unihertz Luna",
+    "description": "Diseño único con luces traseras y gran batería.",
+    "price": 1200000,
+    "image": "https://i.blogs.es/a957c3/nothing/1366_2000.webp",
+    "category": "Smartphones"
+  },
+  {
+    "id": 6,
+    "title": "Realme GT3",
+    "description": "Potencia y carga ultrarrápida para el uso diario.",
+    "price": 690000,
+    "image": "https://i.blogs.es/5582e9/realme-gt3/1366_2000.webp",
+    "category": "Smartphones"
+  },
+  {
+    "id": 7,
+    "title": "Smartwatchs Pro",
+    "description": "Relojes inteligentes con monitoreo de actividad y notificaciones.",
+    "price": 45000,
+    "image": "https://istarmax.com/wp-content/uploads/2024/04/Starmax-Product-Range-Summer-2024-2.webp",
+    "category": "Accesorios"
+  },
+  {
+    "id": 8,
+    "title": "Kit Gamer Pc Ex-450",
+    "description": "Combo gamer 4 en 1: teclado, mouse, auriculares y mousepad RGB.",
+    "price": 60000,
+    "image": "https://smarttucuman.com/img/Public/1130/43425-producto-solarmax-combo-gamer-4-en-1-rgbb.jpg",
+    "category": "Accesorios"
+  },
+  {
+    "id": 9,
+    "title": "Cargador Carga Rápida",
+    "description": "Cargador TurboPower 65W, ideal para carga rápida segura.",
+    "price": 50000,
+    "image": "https://imagenes.elpais.com/resizer/v2/QZTUJNWHPFGR5LTVPOFJZKCBBU.png?auth=0d8390af677bfaefdf5e239f5a41c2c6cddc80473bdaf867cb7a43170c246043&width=1960",
+    "category": "Accesorios"
+  }
+]
