@@ -20,7 +20,7 @@
   <!--PRODUCTOS-->
   <section class="products-container" id="products-container"></section>
   <script type="module">
-    import { renderProductCards } from './js/cards.js';
+  import { renderProductCards } from './js/cards.js';
     import { getProductos } from './js/productosService.js';
     (async () => {
       try {
@@ -30,16 +30,16 @@
         categorias.forEach(cat => {
           const porCategoria = productos
             .filter(p => p.category === cat)
-            .slice(0, 3);//3 por categoría
+            .slice(0, 1);
           productosHome = productosHome.concat(porCategoria);
         });
         renderProductCards(productosHome, 'products-container');
       }
       catch (error) {
-      console.error(error);
-      const container = document.getElementById('products-container');
-      if (container) {
-        container.textContent = 'No se pudieron cargar los productos.';
+        console.error(error);
+        const container = document.getElementById('products-container');
+        if (container) {
+          container.textContent = 'No se pudieron cargar los productos.';
         }
       }
     })();
