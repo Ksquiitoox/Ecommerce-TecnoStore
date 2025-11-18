@@ -17,25 +17,45 @@
       <a href="pages/Categorias.html" class="btn-banner">Ver productos</a>
     </div>
   </section>
-  <!--PRODUCTOS-->
-  <section class="products-container" id="products-container"></section>
+  <!--PRODUCTOS DESTACADOS-->
+  <section class="destacados-section">
+    <h2>Productos Destacados</h2>
+    <div class="slider-wrapper">
+      <button class="slider-arrow" id="destacados-prev">⟨</button>
+      <div id="destacados-slider" class="slider-container">
+        <!-- Acá se van a insertar las cards de productos destacados -->
+      </div>
+      <button class="slider-arrow" id="destacados-next">⟩</button>
+    </div>
+  </section>
+  <!-- PRODUCTOS POR CATEGORÍA EN GRID -->
+  <section style="text-align:center; padding:20px 20px 40px;">
+    <h2>Productos por categoría</h2>
+    <div id="products-container" class="products-container"></div>
+  </section>
+  <!-- SCRIPTS PRODUCTOS (JSON + CARRUSEL + GRID) -->
   <script type="module">
-  import { renderProductCards } from './js/cards.js';
+    import { renderProductCards } from './js/cards.js';
     import { getProductos } from './js/productosService.js';
+    const slider = document.getElementById('destacados-slider');
+    const prevBtn = document.getElementById('destacados-prev');
+    const nextBtn = document.getElementById('destacados-next');
     (async () => {
       try {
         const productos = await getProductos();
+        //DESTACADOS
+        renderProductCards(productos, 'destacados-slider');
+        //HOME: 3 productos por categorIA
         const categorias = ['Laptops', 'Smartphones', 'Accesorios'];
         let productosHome = [];
         categorias.forEach(cat => {
           const porCategoria = productos
             .filter(p => p.category === cat)
-            .slice(0, 1);
+            .slice(0, 3);
           productosHome = productosHome.concat(porCategoria);
         });
         renderProductCards(productosHome, 'products-container');
-      }
-      catch (error) {
+      } catch (error) {
         console.error(error);
         const container = document.getElementById('products-container');
         if (container) {
@@ -43,6 +63,16 @@
         }
       }
     })();
+    //Flechas
+    const scrollAmount = 300;
+    if (prevBtn && nextBtn && slider) {
+      prevBtn.addEventListener('click', () => {
+        slider.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+      });
+      nextBtn.addEventListener('click', () => {
+        slider.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      });
+    }
     </script>
   <!--FOOTER-->
   <section class="footer">

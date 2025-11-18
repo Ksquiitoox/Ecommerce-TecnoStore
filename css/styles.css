@@ -294,6 +294,60 @@ body {
     min-width: 25px;
     text-align: center;
 }
+/*SECUENCIA PRODUCTOS DESTACADOS */
+.destacados-section {
+  padding: 20px;
+  margin-top: 40px;
+}
+.destacados-section h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #0f172a;
+}
+.slider-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+/*Contenedor deslzacble*/
+.slider-container {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 20px 10px;
+}
+.slider-container::-webkit-scrollbar {
+  height: 8px;
+}
+.slider-container::-webkit-scrollbar-thumb {
+  background: #38bdf8;
+  border-radius: 10px;
+}
+.slider-container::-webkit-scrollbar-track {
+  background: #e2e8f0;
+}
+.slider-container .product-card {
+  min-width: 260px;
+  max-width: 260px;
+}
+/*flechas*/
+.slider-arrow {
+  background-color: #38bdf8;
+  color: #0f172a;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+}
+.slider-arrow:hover {
+  background-color: #0ea5e9;
+}
 /* FOOTER */
 .footer {
     background-color:#0f172a; 
