@@ -1,0 +1,91 @@
+document.addEventListener("DOMContentLoaded", () => {
+  const navbarContainer = document.getElementById("navbar");
+  if (!navbarContainer) return;
+
+  const usuarioLogueado = JSON.parse(localStorage.getItem("usuarioLogueado"));
+
+  const nav = document.createElement("nav");
+  nav.classList.add("navbar");
+
+  // LOGO
+  const logoDiv = document.createElement("div");
+  logoDiv.classList.add("logo");
+  logoDiv.innerHTML = `
+    <img src="/img/logo.png" alt="Logo TecnoStore">
+    <h1>TecnoStore</h1>
+  `;
+  nav.appendChild(logoDiv);
+
+  // LINKS
+  const ul = document.createElement("ul");
+  ul.classList.add("nav-links");
+
+  navbarItems.forEach(item => {
+    // mostrar/ocultar según login
+    if (usuarioLogueado && (item.title === "Login" || item.title === "Registro")) return;
+    if (!usuarioLogueado && item.title === "Logout") return;
+
+    const li = document.createElement("li");
+    const a = document.createElement("a");
+
+    a.textContent = item.title;
+    a.href = item.url;
+    if (item.id) a.id = item.id;
+
+    // marcar activo
+    const currentPath = window.location.pathname; // ej: /pages/Laptops.html
+    const itemPath = item.url;
+    if (currentPath === itemPath) {
+      a.classList.add("active");
+    }
+
+    li.appendChild(a);
+    ul.appendChild(li);
+  });
+
+  // LINK CARRITO
+  const liCart = document.createElement("li");
+  const cartLink = document.createElement("a");
+  cartLink.href = "/pages/carrito.html";
+  cartLink.classList.add("cart-link");
+  cartLink.innerHTML = `🛒 Carrito (<span id="cart-count">0</span>)`;
+  liCart.appendChild(cartLink);
+  ul.appendChild(liCart);
+
+  nav.appendChild(ul);
+  navbarContainer.appendChild(nav);
+
+  // SALUDO
+  if (usuarioLogueado) {
+    const saludo = document.createElement("span");
+    saludo.textContent = `👋 Hola, ${usuarioLogueado.nombre}`;
+    saludo.style.marginLeft = "15px";
+    saludo.style.fontWeight = "bold";
+    saludo.style.color = "#38bdf8";
+    logoDiv.appendChild(saludo);
+  }
+
+  // LOGOUT
+  const logoutBtn = document.getElementById("logoutBtn");
+  if (logoutBtn) {
+    logoutBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      localStorage.removeItem("usuarioLogueado");
+      localStorage.removeItem("cart");
+      alert("Cerraste sesión correctamente 👋");
+      window.location.href = "/index.html";
+    });
+  }
+
+  // CONTADOR CARRITO
+  const cartCountSpan = document.getElementById("cart-count");
+
+  function updateCartCount() {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+    if (cartCountSpan) cartCountSpan.textContent = count;
+  }
+
+  updateCartCount();
+  window.addEventListener("cartUpdated", updateCartCount);
+});

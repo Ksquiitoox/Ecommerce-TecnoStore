@@ -6,8 +6,8 @@ document.addEventListener("DOMContentLoaded", () => {
   //Detectar pagina
   const ruta = window.location.pathname;
   let currentPage = ruta.split("/").pop();
-  if (!currentPage) currentPage = "index.html";
-  const esHome = currentPage.toLowerCase() === "index.html";
+  if (!currentPage) currentPage = "/index.html";
+  const esHome = currentPage.toLowerCase() === "/index.html";
   //<nav>
   const nav = document.createElement("nav");
   nav.classList.add("navbar");
@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const logoDiv = document.createElement("div");
   logoDiv.classList.add("logo");
   logoDiv.innerHTML = `
-    <img src="img/logo.png" alt="Logo TecnoStore">
+    <img src="/img/logo.png" alt="Logo TecnoStore">
     <h1>TecnoStore</h1>
   `;
   nav.appendChild(logoDiv);

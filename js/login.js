@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (usuario) {
       localStorage.setItem("usuarioLogueado", JSON.stringify(usuario));
       alert(`Inicio de sesión exitoso. ¡Bienvenido ${usuario.nombre}!`);
-      window.location.href = "index.html";
+      window.location.href = "/index.html";
     } else {
       alert("Usuario o contraseña incorrectos. Por favor intentá nuevamente.");
     }
