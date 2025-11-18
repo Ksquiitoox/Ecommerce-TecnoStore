@@ -5,9 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const usuarioLogueado = JSON.parse(localStorage.getItem("usuarioLogueado"));
   //Detectar pagina
   const ruta = window.location.pathname;
-  let currentPage = ruta.split("/").pop();
-  if (!currentPage) currentPage = "/index.html";
-  const esHome = currentPage.toLowerCase() === "/index.html";
+  const esHome = ruta === "/" || ruta.toLowerCase() === "/index.html";
   //<nav>
   const nav = document.createElement("nav");
   nav.classList.add("navbar");
@@ -55,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Marcar link activo
-    if (item.url.toLowerCase() === currentPage.toLowerCase()) {
+    if (item.url.toLowerCase() === ruta.toLowerCase()) {
       a.classList.add("active");
     }
     
