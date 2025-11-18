@@ -307,13 +307,15 @@ body {
 .slider-wrapper {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 200px;
 }
 /*Contenedor deslzacble*/
 .slider-container {
   display: flex;
   overflow: hidden;
   scroll-behavior: smooth;
+  border-radius: 30px;
+  box-shadow: 0 0 75px rgb(0 0 0 / 10%);
 }
 .slider-container::-webkit-scrollbar {
   height: 20px;
