@@ -200,7 +200,7 @@ body {
     font-weight: bold;
   }
   .alt-link a:hover { text-decoration: underline; }
-/* PRODUCT CARDS */
+/*PRODUCT CARDS*/
 .products-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -250,12 +250,23 @@ body {
 .btn-product:hover {
     background-color: #0ea5e9;
 }
-/* CATEGORÍAS */
+/*CARRIT*/
+#cart-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 700px;      /* ancho máximo del bloque */
+  margin: 20px auto 40px;/* centrado horizontal */
+  padding: 0 15px;
+}
+#cart-container .product-card {
+  width: 100%;
+}
+/*CATEGORiAS*/
 .categorias {
   padding: 50px 20px;
   text-align: center;
 }
-
 .categorias .section-title {
   font-size: 2rem;
   margin-bottom: 20px;
@@ -267,7 +278,7 @@ body {
   display: block;
   cursor: pointer;
 }
-/* QUANTITY SELECTOR */
+/*SELECTOR*/
 .quantity-selector {
     display: flex;
     justify-content: center;
@@ -294,7 +305,7 @@ body {
     min-width: 25px;
     text-align: center;
 }
-/*SECUENCIA PRODUCTOS DESTACADOS */
+/*SECUENCIA PRODUCTOS DESTACADOs*/
 .destacados-section {
   padding: 20px;
   margin-top: 40px;
