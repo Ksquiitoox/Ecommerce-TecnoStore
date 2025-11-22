@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
     const usuario = usuarios.find(u => u.email === email && u.password === password);
     if (usuario) {
-      localStorage.setItem("usuarioLogueado", JSON.stringify(usuario));
+      sessionStorage.setItem("usuarioLogueado", JSON.stringify(usuario));
       alert(`Inicio de sesión exitoso. ¡Bienvenido ${usuario.nombre}!`);
       window.location.href = "/index.html";
     } else {

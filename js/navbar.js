@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const navbarContainer = document.getElementById("navbar");
   if (!navbarContainer) return;
 
-  const usuarioLogueado = JSON.parse(localStorage.getItem("usuarioLogueado"));
+  const usuarioLogueado = JSON.parse(sessionStorage.getItem("usuarioLogueado"));
   //Detectar pagina
   const ruta = window.location.pathname;
   const esHome = ruta === "/" || ruta.toLowerCase() === "/index.html";
@@ -112,7 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (logoutBtn) {
     logoutBtn.addEventListener("click", (e) => {
       e.preventDefault();
-      localStorage.removeItem("usuarioLogueado");
+      sessionStorage.removeItem("usuarioLogueado");
       localStorage.removeItem('cart');
       alert(`Cerraste sesión correctamente, Hasta la próxima, ${usuarioLogueado.nombre} 👋`);
       window.location.href = "/pages/Login.html";
