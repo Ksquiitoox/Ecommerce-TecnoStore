@@ -285,19 +285,59 @@ body {
     margin-bottom: 10px;
 }
 .btn-product {
-    width: 100%;
-    padding: 10px;
-    background-color: #38bdf8;
-    color: #0f172a;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
+
+  background-color: #38bdf8;
+  background-image: url('../img/carrito.png');
+  background-repeat: no-repeat;
+  background-position: 7px center;
+  background-size: 20px 20px;
+  border: 1px solid #141414;
+  color: #0f172a;
+  cursor: pointer;
+  font-family: 'Roboto', sans-serif, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 1.2rem;
+  line-height: 1.2rem;
+  border-radius: 40px;
+  transition: all .3s ease;
+  padding: 10px 20px 10px 30px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
 }
 .btn-product:hover {
-    background-color: #0ea5e9;
+  background-color: #0ea5e9;
+  background-image: url('../img/carrito-hover.png');
+  color: #141414;
+  opacity: 0.9;
+  transition: background-color 0.3s ease;
 }
+.btn-buy{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  max-width: 100%;
+  background-color: #38bdf8;
+  background-image: url('../img/carrito.png');
+  background-repeat: no-repeat;
+  background-position: 7px center;
+  background-size: 20px 20px;
+  border: 1px solid #141414;
+  color: #0f172a;
+  cursor: pointer;
+  font-family: 'Roboto', sans-serif, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 1.2rem;
+  line-height: 1.2rem;
+  border-radius: 40px;
+  padding: 10px 20px 10px 30px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+.btn-buy:hover {
+  background-color: #0ea5e9;
+  background-image: url('../img/carrito-hover.png'); /* ícono hover */
+  color: #141414;
+  opacity: 0.9;
+} 
 /*CARRIT*/
 #cart-container {
   display: flex;
@@ -309,7 +349,10 @@ body {
 #cart-container .product-card {
   width: 100%;
 }
-
+#cart-actions {
+  text-align: center;
+  margin-top: 20px;
+}
 /*CATEGORiAS*/
 .categorias {
   padding: 50px 20px;

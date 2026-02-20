@@ -33,12 +33,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   navbarItems.forEach(item => {
     //Filtro Home
-    if (!usuarioLogueado && esHome) {
+    if (!usuarioLogueado) {
       //Muestro Categorias - Login - Registro
       if (
         item.title !== "Categorías" &&
         item.title !== "Login" &&
-        item.title !== "Registro"
+        item.title !== "Registro" &&
+        item.title !== "Carrito"
       ) {
         return;
       }
@@ -107,15 +108,15 @@ document.addEventListener("DOMContentLoaded", () => {
   updateCartCount();
   // Escuchar evento personalizado "cartUpdated" para actualizar contador en tiempo real
   window.addEventListener('cartUpdated', updateCartCount);
-  // // Logout: limpiar localStorage y redirigir a Login
+  //Logout: limpiar localStorage y redirigir a Login
   const logoutBtn = document.getElementById("logoutBtn");
   if (logoutBtn) {
     logoutBtn.addEventListener("click", (e) => {
       e.preventDefault();
       sessionStorage.removeItem("usuarioLogueado");
       localStorage.removeItem('cart');
-      alert(`Cerraste sesión correctamente, Hasta la próxima, ${usuarioLogueado.nombre} 👋`);
-      window.location.href = "/pages/Login.html";
+      alert(`Hasta la próxima, ${usuarioLogueado.nombre} 👋`);
+      window.location.href = "../pages/Login.html";
     });
   }
   //menu categorias

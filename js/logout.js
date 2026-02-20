@@ -1,11 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
   const logoutBtn = document.getElementById("logoutBtn");
-  const usuarioLogueado = JSON.parse(localStorage.getItem("usuarioLogueado"));
-  if (!logoutBtn || !usuarioLogueado) return;
+  if (!logoutBtn) return;
   logoutBtn.addEventListener("click", (e) => {
     e.preventDefault();
-    localStorage.removeItem("usuarioLogueado");
-    alert(`Cerraste sesión correctamente, Hasta la próxima, ${usuarioLogueado.nombre} 👋`);
-    window.location.href = "/pages/Login.html";
+    const usuarioLogueado = JSON.parse(sessionStorage.getItem("usuarioLogueado"));
+    sessionStorage.removeItem("usuarioLogueado");
+    localStorage.removeItem("cart");
+    alert(`Hasta la próxima, ${usuarioLogueado.nombre} 👋`);
+    window.location.href = "../pages/Login.html";
   });
 });

@@ -1,5 +1,5 @@
 export async function getProductos() {
-  const respuesta = await fetch('/data/productos.json');
+  const respuesta = await fetch('../data/productos.json');
 
   if (!respuesta.ok) {
     throw new Error('No se pudieron cargar los productos');
